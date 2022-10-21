@@ -1,30 +1,55 @@
 package br.com.digitalhouse.blogpessoal.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.sun.istack.NotNull;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 @Entity
 @Table(name = "tb_tema")
 public class TemaModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
     private String descricao;
 
     @OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
-    //mapeamento = ao tema que for passado como parametro
-    //cascata:
     @JsonIgnoreProperties("tema")
-    private List<PostagemModel> temaPostagem;
+    private List<PostagemModel> postagem;
 
     public Long getId() {
         return id;
     }
 
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public List<PostagemModel> getPostagem() {
+        return postagem;
+    }
+
+    public void setPostagem(List<PostagemModel> postagem) {
+        this.postagem = postagem;
+    }
 }

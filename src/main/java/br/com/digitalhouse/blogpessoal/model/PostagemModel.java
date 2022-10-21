@@ -1,10 +1,12 @@
 package br.com.digitalhouse.blogpessoal.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -21,8 +23,12 @@ public class PostagemModel {
     @NotNull
     @Size(min = 10, max = 500)
     private String texto;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date data = new java.sql.Date(System.currentTimeMillis());
+
+
+
+    //--> Usando para entrar no banco data com formatação dia mês e ano....
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private LocalDate data;
 
     @ManyToOne
     @JsonIgnoreProperties("postagemTema")
@@ -30,34 +36,47 @@ public class PostagemModel {
 
 
     public Long getId() {
+
         return id;
     }
 
     public void setId(Long id) {
+
         this.id = id;
     }
 
     public String getTitulo() {
+
         return titulo;
     }
 
     public void setTitulo(String titulo) {
+
         this.titulo = titulo;
     }
 
     public String getTexto() {
+
         return texto;
     }
 
     public void setTexto(String texto) {
+
         this.texto = texto;
     }
-
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    public TemaModel getTema() {
+        return tema;
+    }
+
+    public void setTema(TemaModel tema) {
+        this.tema = tema;
     }
 }

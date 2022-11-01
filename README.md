@@ -34,12 +34,12 @@ create database blogapi
 + open `src/main/resources/application.properties`
 + change `spring.datasource.username` and `spring.datasource.password` as per your mysql installation
 
-**4. Run the app using maven**
+**4. Executar a aplicação usando maven**
 
 ```bash
 mvn spring-boot:run
 ```
-A apicação irá rodar na porta 8080  <br>
+A aplicação será executada na porta 8080  <br>
 <http://localhost:8080>
 
 

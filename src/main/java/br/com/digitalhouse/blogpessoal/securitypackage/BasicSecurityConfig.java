@@ -35,12 +35,12 @@ public class BasicSecurityConfig {
                 .and().csrf().disable()
                 .cors();
 
-        http.authorizeHttpRequests((auth) -> auth
-                .antMatchers("/usuarios/logar").permitAll()
-                .antMatchers("/usuarios/cadastrar").permitAll()
-                .antMatchers(HttpMethod.OPTIONS).permitAll()
-                .anyRequest().authenticated()).httpBasic();
-        return http.build();}
+//        http.authorizeHttpRequests((auth) -> auth
+//                .antMatchers("/usuarios/logar").permitAll()
+//                .antMatchers("/usuarios/cadastrar").permitAll()
+//                .antMatchers(HttpMethod.OPTIONS).permitAll()
+//                .anyRequest().authenticated()).httpBasic();
+      return http.build();}
     //se tudo deu certo, parte html retorna. Filtro das paginas
     }
 //qualquer usuario que acessar o sistema vai chegar na oagina de login e cadastro;

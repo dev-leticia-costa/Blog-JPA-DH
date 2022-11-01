@@ -9,6 +9,7 @@ import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails{
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     private String userName;

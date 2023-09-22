@@ -2,7 +2,7 @@
 
 <h1 align = "center"> API REST - Blog Pessoal </h1>
 
-Projeto desenvolvido pelo professor Jefeno curso Java/Kotlin, da Digital House, com parceria da Empiricus. 
+Projeto desenvolvido pelo professor Jeferson curso Java/Kotlin, da Digital House, com parceria da Empiricus. 
 O objetivo foi construir uma API Rest para entender o conceito da arquiterura mvc, utilizando o Spring Framework.
 
 # Índice

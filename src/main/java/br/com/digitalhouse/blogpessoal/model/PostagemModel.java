@@ -9,12 +9,12 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
-@Table(name = "tb_postagens")
+@Entity //entidade persistente*, cujos objetos podem ser armazenados em um banco de dados relacional
+@Table(name = "tb_postagens")//nome da tabela que está associada à entidade
 public class PostagemModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id// chave primária da entidade
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//  chave primária é gerada automaticamente, por auto-incremento no BD
     private Long id;
     @NotNull
     @Size(min = 5, max = 100)
@@ -27,14 +27,17 @@ public class PostagemModel {
 
 
     //--> Usando para entrar no banco data com formatação dia mês e ano....
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")// para ignorar propriedades específicas durante a serialização
     private LocalDate data;
 
-    @ManyToOne
-    @JsonIgnoreProperties("postagemTema")
+    @ManyToOne //  associação muitos-para-um entre duas entidades
+    @JsonIgnoreProperties("postagemTema")// para ignorar propriedades específicas durante a serialização.
     private TemaModel tema;
 
-
+//---> Getters and Setters: métodos utilizados em POO para acessar e modificar atributos de uma classe encapsulada (atributos privados)
+//    atributos privados não pode ser acessados fora da classe sem os métodos acima.
+//    Get-> método de acesso
+//    Set-> método de modificação, recebe um parâmetro que define o novo valor do atributo
     public Long getId() {
 
         return id;
@@ -80,3 +83,6 @@ public class PostagemModel {
         this.tema = tema;
     }
 }
+
+//*PERSISTÊNCIA: o termo "persistência" se refere à capacidade de manter o estado de uma entidade, geralmente no contexto de um sistema de gerenciamento de banco de dados, de forma que os dados associados à entidade possam ser armazenados, recuperados, atualizados e eventualmente removidos de maneira confiável.
+//o termo "persistência" se refere à capacidade de manter o estado de uma entidade, geralmente no contexto de um sistema de gerenciamento de banco de dados, de forma que os dados associados à entidade possam ser armazenados, recuperados, atualizados e eventualmente removidos de maneira confiável.
